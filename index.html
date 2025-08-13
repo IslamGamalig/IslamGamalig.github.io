@@ -1,268 +1,707 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الحرية المالية</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Islam Gamal | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Cairo for Arabic text -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        /* Custom styles for fonts and theme */
         body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #f0f4f8; /* لون خلفية فاتح */
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s, color 0.3s;
         }
-        .text-gradient {
-            background-image: linear-gradient(to right, #4c51bf, #6b46c1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Apply Cairo font for Arabic text */
+        html[lang="ar"] body, html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3, html[lang="ar"] p, html[lang="ar"] span, html[lang="ar"] a, html[lang="ar"] button {
+            font-family: 'Cairo', sans-serif;
+        }
+        /* Style for active language button */
+        .lang-btn.active {
+            background-color: #1D4ED8; /* Darker blue */
+            color: white;
+        }
+        /* Ensure smooth transitions for all elements */
+        * {
+            transition: background-color 0.3s, color 0.2s, border-color 0.3s, box-shadow 0.3s, transform 0.3s;
         }
     </style>
+    <script>
+        // Set dark mode strategy for Tailwind CSS
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
 </head>
-<body class="text-gray-800">
+<body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-200">
 
     <!-- Header -->
-    <header class="bg-white shadow-lg rounded-b-3xl px-4 py-6 md:py-8 lg:py-10">
-        <div class="container mx-auto text-center">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gradient">الحرية المالية</h1>
-            <p class="mt-2 text-lg md:text-xl lg:text-2xl text-gray-600">دليل شامل لمصادر الدخل وطرق بناء الثروة</p>
-        </div>
+    <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-600 dark:text-blue-400" data-translate="name">Islam Gamal</h1>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400" data-translate="nav_about">About</a>
+                <a href="#skills" class="hover:text-blue-600 dark:hover:text-blue-400" data-translate="nav_skills">Skills</a>
+                <a href="#experience" class="hover:text-blue-600 dark:hover:text-blue-400" data-translate="nav_experience">Experience</a>
+                <a href="#projects" class="hover:text-blue-600 dark:hover:text-blue-400" data-translate="nav_projects">Projects</a>
+                <a href="#home" class="bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 transition" data-translate="nav_contact">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <!-- Language Buttons -->
+                <div class="flex items-center space-x-2">
+                    <button onclick="changeLanguage('en')" class="lang-btn text-sm font-semibold py-1 px-3 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700">EN</button>
+                    <button onclick="changeLanguage('ar')" class="lang-btn text-sm font-semibold py-1 px-3 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700">AR</button>
+                    <button onclick="changeLanguage('de')" class="lang-btn text-sm font-semibold py-1 px-3 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700">DE</button>
+                </div>
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="text-white bg-amber-500 hover:bg-amber-600 rounded-full w-8 h-8 flex items-center justify-center focus:outline-none">
+                    <i id="theme-toggle-icon" class="fas"></i>
+                </button>
+            </div>
+        </nav>
     </header>
 
-    <!-- Main Content Section -->
-    <main class="container mx-auto px-4 py-12 md:py-16">
-        <!-- Introduction Section -->
-        <section class="mb-12 text-center max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">ما هي الحرية المالية؟</h2>
-            <p class="text-lg md:text-xl leading-relaxed text-gray-700">
-                الحرية المالية هي الحالة التي تمتلك فيها دخلاً كافياً من مصادر متعددة لتغطية نفقاتك دون الحاجة إلى العمل التقليدي. للوصول إلى هذه المرحلة، من الضروري فهم مصادر الدخل المختلفة وكيفية الاستفادة منها.
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Hero Section -->
+        <section id="home" class="text-center pt-12 pb-20">
+            <img src="1.png" alt="Islam Gamal" class="w-48 h-48 rounded-full mx-auto mb-6 shadow-lg object-cover">
+            <h2 class="text-5xl md:text-6xl font-bold mb-4" data-translate="name">Islam Gamal</h2>
+            <p class="text-xl md:text-2xl text-blue-600 dark:text-blue-400 font-semibold mb-2" data-translate="title">Data Engineer | Data Analyst | Data Scientist</p>
+            <p class="text-md text-gray-500 dark:text-gray-400 mb-8" data-translate="location">Egypt, Cairo</p>
+            <div class="flex justify-center space-x-6 text-3xl text-gray-500">
+                <a href="https://www.linkedin.com/in/islamgamalig/" target="_blank" class="hover:text-blue-700 dark:hover:text-blue-400"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/IslamGamalig" target="_blank" class="hover:text-gray-700 dark:hover:text-white"><i class="fab fa-github"></i></a>
+                <a href="mailto:islamibnalazhar@gmail.com" class="hover:text-red-600 dark:hover:text-red-400"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+201271215561" class="hover:text-green-600 dark:hover:text-green-400"><i class="fas fa-phone"></i></a>
+            </div>
+            <div class="mt-10">
+                <a href="Islam Gamal.pdf" download class="bg-blue-600 text-white py-3 px-8 rounded-full hover:bg-blue-700 transition text-lg font-semibold inline-flex items-center shadow-lg transform hover:scale-105">
+                    <i class="fas fa-download mr-2"></i> <span data-translate="download_cv">Download CV</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16">
+            <h3 class="text-3xl font-bold text-center mb-8" data-translate="about_title">About Me</h3>
+            <p class="max-w-3xl mx-auto text-center text-lg leading-relaxed" data-translate="about_summary">
+                Motivated student of Artificial Intelligence and Data Science, currently pursuing dual academic paths at Beni-Suef National University (BSNU), Egypt and IU International University of Applied Sciences, Germany. I'm passionate about leveraging data to solve real-world problems and have hands-on experience in machine learning, predictive analytics, and exploratory data analysis.
             </p>
         </section>
 
-        <!-- Money Sources Section -->
-        <section class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-
-            <!-- Employee Card - Updated with more details and examples -->
-            <div class="bg-white rounded-2xl shadow-xl p-8 transform transition duration-300 hover:scale-105">
-                <div class="flex items-center justify-center mb-4">
-                    <div class="bg-indigo-100 rounded-full p-4">
-                        <svg class="h-10 w-10 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-                        </svg>
+        <!-- Skills Section -->
+        <section id="skills" class="py-16 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-lg">
+            <h3 class="text-3xl font-bold text-center mb-12" data-translate="skills_title">Skills</h3>
+            <div class="max-w-5xl mx-auto px-4">
+                <div class="mb-8">
+                    <h4 class="font-bold text-xl mb-4 text-blue-600 dark:text-blue-400" data-translate="skills_cat1">Programming & Cloud</h4>
+                    <div class="flex flex-wrap gap-3" data-translate="skills_list1">
+                        <!-- Skills are now injected via JS -->
                     </div>
                 </div>
-                <h3 class="text-2xl font-bold mb-2 text-center">الموظف</h3>
-                <p class="text-gray-600 text-center">
-                    يكسب المال من خلال بيع وقته ومهاراته لجهة معينة مقابل راتب ثابت. هذا المصدر يوفر استقرارًا ولكنه غالباً ما يكون محدودًا.
-                </p>
-                <ul class="mt-4 text-gray-500 list-disc list-inside">
-                    <li><span class="font-semibold text-gray-700">كيف يكسب المال؟</span> راتب شهري أو أسبوعي ثابت مقابل عدد ساعات محددة من العمل.</li>
-                    <li><span class="font-semibold text-gray-700">مشاريع/أعمال:</span> لا يمتلك مشاريع خاصة به. قد يضيف دخلاً إضافيًا من عمل جانبي (Freelance) خارج وظيفته.</li>
-                    <li><span class="font-semibold text-gray-700">النمو:</span> محدود بالترقيات داخل الشركة، الحصول على مكافآت، أو تغيير الوظيفة لراتب أعلى.</li>
-                </ul>
-            </div>
-
-            <!-- Contractor Card - Updated with more details and examples -->
-            <div class="bg-white rounded-2xl shadow-xl p-8 transform transition duration-300 hover:scale-105">
-                <div class="flex items-center justify-center mb-4">
-                    <div class="bg-purple-100 rounded-full p-4">
-                        <svg class="h-10 w-10 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM11 13a3 3 0 11-6 0 3 3 0 016 0zM17 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
+                <div class="mb-8">
+                    <h4 class="font-bold text-xl mb-4 text-blue-600 dark:text-blue-400" data-translate="skills_cat2">AI & Machine Learning</h4>
+                    <div class="flex flex-wrap gap-3" data-translate="skills_list2">
+                        <!-- Skills are now injected via JS -->
                     </div>
                 </div>
-                <h3 class="text-2xl font-bold mb-2 text-center">المقاول</h3>
-                <p class="text-gray-600 text-center">
-                    يعمل بشكل مستقل ويقدم خدماته أو خبراته للعديد من العملاء. دخله يعتمد على عدد المشاريع التي ينجزها.
-                </p>
-                <ul class="mt-4 text-gray-500 list-disc list-inside">
-                    <li><span class="font-semibold text-gray-700">كيف يكسب المال؟</span> أجر لكل مشروع، خدمة، أو بالساعة. يعتمد دخله على مهاراته وسمعته في السوق.</li>
-                    <li><span class="font-semibold text-gray-700">مشاريع/أعمال:</span> كتابة محتوى، تصميم جرافيك، تطوير مواقع وبرمجة، استشارات إدارية، خدمات الترجمة، تصوير فوتوغرافي، تدريب شخصي، أعمال بناء وصيانة.</li>
-                    <li><span class="font-semibold text-gray-700">النمو:</span> يعتمد على زيادة عدد العملاء، بناء علامة تجارية شخصية قوية، ورفع أسعار خدماته.</li>
-                </ul>
-            </div>
-
-            <!-- Business Owner Card - Updated with more details and examples -->
-            <div class="bg-white rounded-2xl shadow-xl p-8 transform transition duration-300 hover:scale-105">
-                <div class="flex items-center justify-center mb-4">
-                    <div class="bg-yellow-100 rounded-full p-4">
-                        <svg class="h-10 w-10 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zM6 8a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm2 3a1 1 0 000 2h4a1 1 0 100-2H8z" clip-rule="evenodd" />
-                        </svg>
+                <div>
+                    <h4 class="font-bold text-xl mb-4 text-blue-600 dark:text-blue-400" data-translate="skills_cat4">Soft Skills</h4>
+                    <div class="flex flex-wrap gap-3" data-translate="skills_list4">
+                        <!-- Skills are now injected via JS -->
                     </div>
-                </div>
-                <h3 class="text-2xl font-bold mb-2 text-center">صاحب شركة</h3>
-                <p class="text-gray-600 text-center">
-                    يبني نظامًا يعمل من أجله، ويؤسس فريقًا. دخله يأتي من أرباح شركته التي تبيع منتجات أو خدمات.
-                </p>
-                <ul class="mt-4 text-gray-500 list-disc list-inside">
-                    <li><span class="font-semibold text-gray-700">كيف يكسب المال؟</span> أرباح الشركة بعد خصم النفقات. يتم بناء نظام وعمليات تسمح للشركة بالعمل بكفاءة.</li>
-                    <li><span class="font-semibold text-gray-700">مشاريع/أعمال:</span> متجر إلكتروني لبيع منتجات، مطعم أو سلسلة مقاهي، شركة استيراد وتصدير، شركة عقارات، تطبيق للهواتف الذكية، مصنع صغير.</li>
-                    <li><span class="font-semibold text-gray-700">النمو:</span> ينمو بتوسع الشركة في أسواق جديدة، زيادة قاعدة العملاء، وتطوير منتجات أو خدمات جديدة.</li>
-                </ul>
-            </div>
-
-            <!-- Investor Card - Updated with more details and examples -->
-            <div class="bg-white rounded-2xl shadow-xl p-8 transform transition duration-300 hover:scale-105">
-                <div class="flex items-center justify-center mb-4">
-                    <div class="bg-green-100 rounded-full p-4">
-                        <svg class="h-10 w-10 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 012 0v2h2a1 1 0 110 2H9v2a1 1 0 11-2 0v-2H5a1 1 0 010-2h2V9z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                </div>
-                <h3 class="text-2xl font-bold mb-2 text-center">المستثمر</h3>
-                <p class="text-gray-600 text-center">
-                    يجعل أمواله تعمل لصالحه. يستثمر في الأصول التي تدر عليه دخلاً سلبياً أو تزيد قيمتها بمرور الوقت.
-                </p>
-                <ul class="mt-4 text-gray-500 list-disc list-inside">
-                    <li><span class="font-semibold text-gray-700">كيف يكسب المال؟</span> عائدات على الاستثمارات في أصول مختلفة تدر دخلاً سلبياً (Passive Income) أو تزيد قيمتها بمرور الوقت.</li>
-                    <li><span class="font-semibold text-gray-700">مشاريع/أعمال:</span> الاستثمار في الأسهم (توزيعات أرباح)، العقارات (إيجارات وزيادة قيمة)، السندات الحكومية أو الشركات، مشاريع ناشئة، صناديق استثمارية، أصول رقمية مثل العملات المشفرة.</li>
-                    <li><span class="font-semibold text-gray-700">النمو:</span> ينمو بزيادة قيمة الأصول، إعادة استثمار العائدات، وتنويع المحفظة الاستثمارية.</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Active vs. Passive Income Section -->
-        <section class="mt-12 text-center max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">الدخل النشط مقابل الدخل السلبي</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-white rounded-2xl shadow-xl p-8">
-                    <h3 class="text-2xl font-bold text-indigo-600 mb-2">الدخل النشط (Active Income)</h3>
-                    <p class="text-gray-600">
-                        هو الدخل الذي يتطلب منك بذل جهد مباشر ومستمر للحصول عليه. إذا توقفت عن العمل، يتوقف الدخل. معظم الناس يعتمدون على هذا النوع من الدخل.
-                    </p>
-                    <ul class="mt-4 text-gray-500 list-disc list-inside text-right">
-                        <li><span class="font-semibold text-gray-700">أمثلة:</span> راتب الموظف، أجر المقاول عن كل مشروع، أرباح الطبيب من كل كشف، أجر المحامي عن كل قضية.</li>
-                    </ul>
-                </div>
-                <div class="bg-white rounded-2xl shadow-xl p-8">
-                    <h3 class="text-2xl font-bold text-green-600 mb-2">الدخل السلبي (Passive Income)</h3>
-                    <p class="text-gray-600">
-                        هو الدخل الذي تستمر في الحصول عليه بجهد قليل أو بدون جهد بعد بذل الجهد الأولي. الهدف من الحرية المالية هو بناء هذا النوع من الدخل.
-                    </p>
-                    <ul class="mt-4 text-gray-500 list-disc list-inside text-right">
-                        <li><span class="font-semibold text-gray-700">أمثلة:</span> إيرادات الإيجارات العقارية، توزيعات الأرباح من الأسهم، الأرباح من الكتب أو الدورات الرقمية، الأرباح من شركة تعمل بشكل آلي.</li>
-                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- 100 Online Ideas Section -->
-        <section class="mt-12 text-center max-w-5xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8">100 فكرة للربح عبر الإنترنت</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 text-right">
-
-                <!-- Employee Ideas -->
-                <div class="bg-white rounded-2xl shadow-xl p-6">
-                    <h3 class="text-2xl font-bold text-indigo-600 mb-4">1. الموظف (العمل عن بُعد)</h3>
-                    <ul class="list-disc list-inside leading-relaxed text-gray-600">
-                        <li>مساعد افتراضي</li>
-                        <li>خدمة عملاء عن بعد</li>
-                        <li>مدرس أو معلم عبر الإنترنت</li>
-                        <li>مُدخل بيانات</li>
-                        <li>مدير مشروع عن بعد</li>
-                        <li>محاسب عن بعد</li>
-                        <li>مسؤول موارد بشرية عن بعد</li>
-                        <li>كاتب محتوى لموقع إخباري</li>
-                        <li>مُدقق لغوي لمؤسسة نشر</li>
-                        <li>مبرمج ضمن فريق شركة</li>
-                    </ul>
+        <!-- Experience Section -->
+        <section id="experience" class="py-16">
+            <h3 class="text-3xl font-bold text-center mb-12" data-translate="experience_title">Experience</h3>
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Vertical line -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-300 dark:bg-gray-600"></div>
+                <!-- Experience Items -->
+                <div class="space-y-12">
+                    <!-- Item 0 (New) -->
+                    <div class="flex md:justify-end md:pr-8 relative">
+                        <div class="w-full md:w-5/12 bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md border-l-4 border-blue-500">
+                            <h4 class="font-bold text-xl mb-1" data-translate="exp0_title">Summer training 2025</h4>
+                            <p class="text-blue-500 mb-2" data-translate="exp0_company">CIB Egypt · Internship | Aug 2025 - Present</p>
+                            <ul class="list-disc list-inside text-sm space-y-1" data-translate="exp0_desc"><li>Gaining practical experience in the banking sector and financial technology.</li></ul>
+                        </div>
+                    </div>
+                    <!-- Item 1 -->
+                    <div class="flex md:justify-start md:pl-8 relative">
+                        <div class="w-full md:w-5/12 bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md border-r-4 md:border-r-0 md:border-l-4 border-blue-500">
+                            <h4 class="font-bold text-xl mb-1" data-translate="exp1_title">2025 PRME COP30 Program</h4>
+                            <p class="text-blue-500 mb-2" data-translate="exp1_company">Principles for Responsible Management Education (PRME) | Jul 2025 - Present</p>
+                            <ul class="list-disc list-inside text-sm space-y-1" data-translate="exp1_desc"><li>Participating in the global initiative for responsible management education.</li></ul>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="flex md:justify-end md:pr-8 relative">
+                        <div class="w-full md:w-5/12 bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md border-l-4 border-blue-500">
+                            <h4 class="font-bold text-xl mb-1" data-translate="exp2_title">HP Tech Ventures Remote Extern</h4>
+                            <p class="text-blue-500 mb-2" data-translate="exp2_company">HP | Sep 2024</p>
+                            <ul class="list-disc list-inside text-sm space-y-1" data-translate="exp2_desc">
+                                <li>Increased potential investment portfolio by 15% by conducting market research for HP Tech Ventures.</li>
+                                <li>Improved acquisition success by 25% by evaluating financial viability of target companies with team collaboration.</li>
+                                <li>Assisted in the development of investment strategies to maximize returns and drive quick profits for HP.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="flex md:justify-start md:pl-8 relative">
+                         <div class="w-full md:w-5/12 bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md border-r-4 md:border-r-0 md:border-l-4 border-blue-500">
+                            <h4 class="font-bold text-xl mb-1" data-translate="exp3_title">Data Analysis Intern</h4>
+                            <p class="text-blue-500 mb-2" data-translate="exp3_company">NeuronetiX | Aug 2024 - Sep 2024</p>
+                            <ul class="list-disc list-inside text-sm space-y-1" data-translate="exp3_desc">
+                                <li>Developed proficiency in Excel, Power BI, and SQL through hands-on projects at NeuronetiX.</li>
+                                <li>Enhanced data analysis skills, improving accuracy by 15% through collaboration with team members.</li>
+                                <li>Successfully completed a final project integrating all learned skills for practical application.</li>
+                            </ul>
+                        </div>
+                    </div>
+                     <!-- Item 4 -->
+                    <div class="flex md:justify-end md:pr-8 relative">
+                         <div class="w-full md:w-5/12 bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md border-l-4 border-blue-500">
+                            <h4 class="font-bold text-xl mb-1" data-translate="exp4_title">Summer training 2024</h4>
+                            <p class="text-blue-500 mb-2" data-translate="exp4_company">CIB Egypt | Aug 2024</p>
+                            <ul class="list-disc list-inside text-sm space-y-1" data-translate="exp4_desc">
+                                <li>Enhanced financial transaction efficiency by 15% through participation in training on blockchain and fintech.</li>
+                                <li>Collaborated with experts to gain insights into cutting-edge advancements in the industry.</li>
+                                <li>Improved Skills in blockchain technology, financial transactions, and industry trends.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Contractor Ideas -->
-                <div class="bg-white rounded-2xl shadow-xl p-6">
-                    <h3 class="text-2xl font-bold text-purple-600 mb-4">2. المقاول (الأعمال الحرة)</h3>
-                    <ul class="list-disc list-inside leading-relaxed text-gray-600">
-                        <li>تصميم جرافيك</li>
-                        <li>تطوير مواقع إلكترونية (فرونت-إند، باك-إند)</li>
-                        <li>تطوير تطبيقات الهاتف المحمول</li>
-                        <li>كتابة محتوى لمواقع ومدونات</li>
-                        <li>ترجمة احترافية</li>
-                        <li>تحرير فيديو</li>
-                        <li>تصميم شعارات وهوية بصرية</li>
-                        <li>إدارة حسابات التواصل الاجتماعي</li>
-                        <li>تحسين محركات البحث (SEO)</li>
-                        <li>كتابة الإعلانات (Copywriting)</li>
-                        <li>استشارات تسويقية</li>
-                        <li>تصميم واجهات وتجربة المستخدم (UI/UX)</li>
-                        <li>تصوير فوتوغرافي وبيع الصور عبر الإنترنت</li>
-                        <li>التعليق الصوتي</li>
-                        <li>إنشاء رسوم متحركة (Animation)</li>
-                        <li>إدارة حملات إعلانية على فيسبوك وجوجل</li>
-                        <li>تقديم استشارات في اللياقة البدنية أو التغذية</li>
-                        <li>إعداد خطط عمل ودراسات جدوى</li>
-                        <li>خدمات المونتاج الصوتي</li>
-                        <li>تحليل البيانات</li>
-                        <li>كتابة السيرة الذاتية (CV)</li>
-                        <li>تدريب شخصي (Life coaching)</li>
-                        <li>إعداد التقارير والأبحاث</li>
-                        <li>تصميم عروض تقديمية (PowerPoint)</li>
-                        <li>تفريغ المحتوى الصوتي إلى نص</li>
-                        <li>تصميم نماذج 3D</li>
-                        <li>رسم رقمي (Digital Art)</li>
-                        <li>إدارة التجارة الإلكترونية للمتاجر</li>
-                        <li>استشارات في الأمن السيبراني</li>
-                        <li>بناء تطبيقات بدون كود (No-code)</li>
-                    </ul>
+        <!-- Projects Section -->
+        <section id="projects" class="py-16 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-lg">
+            <h3 class="text-3xl font-bold text-center mb-12" data-translate="projects_title">Projects</h3>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Project 1 -->
+                <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 transform hover:scale-105 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-xl mb-2" data-translate="proj1_title">Image Classification Using Deep Learning and TensorFlow</h4>
+                        <p class="mb-4 text-sm" data-translate="proj1_desc">Increased image classification accuracy by 15% by training a deep learning model using TensorFlow and Keras workflow. The project trains a model on a custom dataset and includes data preprocessing, augmentation, model building, training, evaluation, and prediction.</p>
+                    </div>
+                    <div class="mt-4">
+                        <a href="https://github.com/IslamGamalig/Image-Classification-Using-Deep-Learning-and-Tensorflow" target="_blank" class="inline-block bg-gray-700 dark:bg-gray-600 text-white py-2 px-4 rounded-full hover:bg-gray-800 dark:hover:bg-gray-500 transition text-sm">
+                            <i class="fab fa-github mr-2"></i> <span data-translate="view_on_github">View on GitHub</span>
+                        </a>
+                    </div>
                 </div>
+                <!-- Project 2 -->
+                <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 transform hover:scale-105 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-xl mb-2" data-translate="proj2_title">Predicting the Weather Using Machine Learning</h4>
+                        <p class="mb-4 text-sm" data-translate="proj2_desc">Built a machine learning model to predict weather conditions based on historical data. Performed data preprocessing, feature selection, and model training using algorithms like Linear Regression and Decision Trees to accurately forecast temperature and other weather metrics. Improved weather prediction accuracy by 15%.</p>
+                    </div>
+                    <div class="mt-4">
+                         <a href="https://github.com/IslamGamalig/Predicting-The-Weather-Using-Machine-Learning" target="_blank" class="inline-block bg-gray-700 dark:bg-gray-600 text-white py-2 px-4 rounded-full hover:bg-gray-800 dark:hover:bg-gray-500 transition text-sm">
+                            <i class="fab fa-github mr-2"></i> <span data-translate="view_on_github">View on GitHub</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 transform hover:scale-105 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-xl mb-2" data-translate="proj3_title">Exploring eBay Car Sales Data</h4>
+                        <p class="mb-4 text-sm" data-translate="proj3_desc">Increased decision-making efficiency by 30%, analyzing 5,000 eBay Germany car sales listings to gain insights into the used car market. The project involved cleaning, analyzing, and visualizing the data.</p>
+                    </div>
+                    <div class="mt-4">
+                        <a href="https://github.com/IslamGamalig/Exploring-eBay-Car-Sales-Data" target="_blank" class="inline-block bg-gray-700 dark:bg-gray-600 text-white py-2 px-4 rounded-full hover:bg-gray-800 dark:hover:bg-gray-500 transition text-sm">
+                            <i class="fab fa-github mr-2"></i> <span data-translate="view_on_github">View on GitHub</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Project 4 -->
+                <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 transform hover:scale-105 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-xl mb-2" data-translate="proj4_title">Web-Scraping Financial Data using Nasdaq Data Link API</h4>
+                        <p class="mb-4 text-sm" data-translate="proj4_desc">Improved financial data analysis capacity by 20% by optimizing data collection from Nasdaq Data Link API. This involved pulling time-series data, cleaning it, filtering for a specific date range, and preparing it for further analysis.</p>
+                    </div>
+                    <div class="mt-4">
+                        <a href="https://github.com/IslamGamalig/Web-Scraping-Financial-Data-using-Nasdaq-Data-Link-API" target="_blank" class="inline-block bg-gray-700 dark:bg-gray-600 text-white py-2 px-4 rounded-full hover:bg-gray-800 dark:hover:bg-gray-500 transition text-sm">
+                            <i class="fab fa-github mr-2"></i> <span data-translate="view_on_github">View on GitHub</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                <!-- Business Owner Ideas -->
-                <div class="bg-white rounded-2xl shadow-xl p-6">
-                    <h3 class="text-2xl font-bold text-yellow-600 mb-4">3. صاحب شركة</h3>
-                    <ul class="list-disc list-inside leading-relaxed text-gray-600">
-                        <li>إنشاء متجر إلكتروني متخصص (Dropshipping)</li>
-                        <li>بيع منتجات رقمية (كتب، قوالب، أدوات)</li>
-                        <li>بيع دورات تدريبية عبر الإنترنت</li>
-                        <li>إنشاء قناة على يوتيوب أو بودكاست (تحقيق الدخل من الإعلانات والشراكات)</li>
-                        <li>بناء تطبيق أو برنامج كخدمة (SaaS)</li>
-                        <li>إنشاء مدونة أو موقع إخباري وتحقيق الدخل من الإعلانات</li>
-                        <li>تأسيس وكالة تسويق رقمي</li>
-                        <li>بناء مجتمع مدفوع عبر الإنترنت</li>
-                        <li>الطباعة عند الطلب (Print-on-Demand)</li>
-                        <li>تأسيس شركة استضافة مواقع</li>
-                        <li>بناء لعبة فيديو وبيعها</li>
-                        <li>تأسيس شركة لتصميم المواقع والتطبيقات</li>
-                        <li>شراء وتطوير وبيع المواقع الإلكترونية (Flipping)</li>
-                        <li>تأسيس شركة للتسويق بالعمولة (Affiliate Marketing)</li>
-                        <li>تأسيس شركة لخدمات البريد الإلكتروني التسويقي</li>
-                        <li>تأجير أدوات أو أجهزة عن طريق منصة</li>
-                        <li>إنشاء منصة للتوظيف الحر (Freelancing platform)</li>
-                        <li>تأسيس شركة لتحليل البيانات للمشاريع الأخرى</li>
-                        <li>بناء ماركة تجارية لمنتجات معينة وبيعها أونلاين</li>
-                        <li>تقديم خدمات الصيانة الفنية عن بعد</li>
-                    </ul>
+        <!-- Education Section -->
+        <section id="education" class="py-16">
+            <h3 class="text-3xl font-bold text-center mb-12" data-translate="education_title">Education</h3>
+            <div class="max-w-2xl mx-auto space-y-6">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h4 class="font-bold text-lg" data-translate="edu1_degree">Bachelor's, Data Science</h4>
+                    <p class="text-blue-500" data-translate="edu1_uni">IU International University of Applied Sciences</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400" data-translate="edu1_date">2025 - 2028</p>
                 </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h4 class="font-bold text-lg" data-translate="edu2_degree">Bachelor's, AI and data science</h4>
+                    <p class="text-blue-500" data-translate="edu2_uni">Beni Suef National University</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400" data-translate="edu2_date">2023 - 2027</p>
+                </div>
+            </div>
+        </section>
 
-                <!-- Investor Ideas -->
-                <div class="bg-white rounded-2xl shadow-xl p-6">
-                    <h3 class="text-2xl font-bold text-green-600 mb-4">4. المستثمر</h3>
-                    <ul class="list-disc list-inside leading-relaxed text-gray-600">
-                        <li>الاستثمار في الأسهم (توزيعات الأرباح)</li>
-                        <li>الاستثمار في صناديق الاستثمار المتداولة (ETFs)</li>
-                        <li>شراء العقارات عبر الإنترنت (Real estate crowdfunding)</li>
-                        <li>الاستثمار في العملات الرقمية (Bitcoin, Ethereum)</li>
-                        <li>الإقراض من نظير إلى نظير (P2P Lending)</li>
-                        <li>الاستثمار في صناديق المؤشرات</li>
-                        <li>شراء سندات حكومية أو شركات عبر الإنترنت</li>
-                        <li>الاستثمار في الشركات الناشئة (Venture Capital)</li>
-                        <li>شراء أصول رقمية مثل اسم نطاق (Domain Name) مميز</li>
-                        <li>شراء محتوى رقمي (مثل مدونة أو قناة يوتيوب مربحة)</li>
-                        <li>المشاركة في مشاريع جماعية للتمويل (Crowdfunding)</li>
-                    </ul>
+        <!-- Certifications Section -->
+        <section id="certifications" class="py-16 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-lg">
+            <h3 class="text-3xl font-bold text-center mb-12" data-translate="certifications_title">Licenses & Certifications</h3>
+            <div class="max-w-2xl mx-auto space-y-4">
+                <a href="https://www.credly.com/badges/2fdc6c7c-cfe2-47fe-9fd0-d9da59c1a7d7" target="_blank" rel="noopener noreferrer" class="block hover:shadow-xl rounded-lg">
+                    <div class="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm flex items-center">
+                        <i class="fas fa-certificate text-blue-500 text-2xl mr-4"></i>
+                        <div>
+                            <h4 class="font-semibold" data-translate="cert1_title">Professional Machine Learning Engineer</h4>
+                            <p class="text-sm text-gray-500" data-translate="cert1_issuer">Google</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/64887VFW43U0" target="_blank" rel="noopener noreferrer" class="block hover:shadow-xl rounded-lg">
+                    <div class="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm flex items-center">
+                        <i class="fas fa-certificate text-blue-500 text-2xl mr-4"></i>
+                        <div>
+                            <h4 class="font-semibold" data-translate="cert4_title">Machine Learning</h4>
+                            <p class="text-sm text-gray-500" data-translate="cert4_issuer">DeepLearning.AI</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://www.coursera.org/account/accomplishments/specialization/NG4SI1277038" target="_blank" rel="noopener noreferrer" class="block hover:shadow-xl rounded-lg">
+                    <div class="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm flex items-center">
+                        <i class="fas fa-certificate text-blue-500 text-2xl mr-4"></i>
+                        <div>
+                            <h4 class="font-semibold" data-translate="cert2_title">IBM Data Science</h4>
+                            <p class="text-sm text-gray-500" data-translate="cert2_issuer">IBM</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://coursera.org/share/e250dd2fe438e7827db23dfb02153363" target="_blank" rel="noopener noreferrer" class="block hover:shadow-xl rounded-lg">
+                    <div class="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm flex items-center">
+                        <i class="fas fa-certificate text-blue-500 text-2xl mr-4"></i>
+                        <div>
+                            <h4 class="font-semibold" data-translate="cert3_title">IBM Data Analyst</h4>
+                            <p class="text-sm text-gray-500" data-translate="cert3_issuer">IBM</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://coursera.org/share/2c16562bb608b90fe9a7e1cddfc9d3d7" target="_blank" rel="noopener noreferrer" class="block hover:shadow-xl rounded-lg">
+                    <div class="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm flex items-center">
+                        <i class="fas fa-certificate text-blue-500 text-2xl mr-4"></i>
+                        <div>
+                            <h4 class="font-semibold" data-translate="cert5_title">IBM Data Analytics with Excel and R</h4>
+                            <p class="text-sm text-gray-500" data-translate="cert5_issuer">IBM</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://credentials.edx.org/credentials/c2c417edf10e4bbd9ea3712a61bb49c2" target="_blank" rel="noopener noreferrer" class="block hover:shadow-xl rounded-lg">
+                    <div class="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm flex items-center">
+                        <i class="fas fa-certificate text-blue-500 text-2xl mr-4"></i>
+                        <div>
+                            <h4 class="font-semibold" data-translate="cert6_title">Skills for Success</h4>
+                            <p class="text-sm text-gray-500" data-translate="cert6_issuer">Fullbridge</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/learning/certificates/b3a3ec1d4d2a63fa62dde6bff7c8d0f784bc8fa874083c7ff2b02d240f9b3d4e" target="_blank" rel="noopener noreferrer" class="block hover:shadow-xl rounded-lg">
+                    <div class="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm flex items-center">
+                        <i class="fas fa-certificate text-blue-500 text-2xl mr-4"></i>
+                        <div>
+                            <h4 class="font-semibold" data-translate="cert7_title">Become a Data Scientist</h4>
+                            <p class="text-sm text-gray-500" data-translate="cert7_issuer">LinkedIn</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Languages Section -->
+        <section id="languages" class="py-16">
+            <h3 class="text-3xl font-bold text-center mb-8" data-translate="languages_title">Languages</h3>
+            <div class="flex justify-center items-center gap-8 max-w-2xl mx-auto">
+                <div class="text-center">
+                    <h4 class="text-lg font-semibold" data-translate="lang1_name">Arabic</h4>
+                    <p class="text-gray-500" data-translate="lang1_level">Native</p>
                 </div>
+                <div class="text-center">
+                    <h4 class="text-lg font-semibold" data-translate="lang2_name">English</h4>
+                    <p class="text-gray-500" data-translate="lang2_level">Fluent</p>
+                </div>
+                <div class="text-center">
+                    <h4 class="text-lg font-semibold" data-translate="lang3_name">German</h4>
+                    <p class="text-gray-500" data-translate="lang3_level">Beginner</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Volunteering Section -->
+        <section id="volunteering" class="py-16 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-lg">
+            <h3 class="text-3xl font-bold text-center mb-12" data-translate="volunteering_title">Volunteering</h3>
+            <div class="max-w-2xl mx-auto">
+                <a href="https://mvp.microsoft.com/en-US/studentambassadors/profile/5eea8cfb-992b-41a9-b539-6a6ea40b7ce3" target="_blank" rel="noopener noreferrer" class="block bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 transform hover:shadow-xl transition">
+                    <div class="flex items-start">
+                        <i class="fab fa-microsoft text-4xl text-blue-500 dark:text-blue-400 mr-6 mt-1"></i>
+                        <div>
+                            <h4 class="font-bold text-xl mb-1" data-translate="volunteer_title">Beni Suef Students Ambassador</h4>
+                            <p class="text-blue-500 mb-2" data-translate="volunteer_org">Microsoft Learn Student Ambassadors</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4" data-translate="volunteer_date">Apr 2025 - Present</p>
+                            <p class="text-sm leading-relaxed" data-translate="volunteer_desc">As a Microsoft Learn Student Ambassador, I represent Microsoft at my university and help build a local tech community. I organize workshops and events to introduce fellow students to Microsoft technologies like Azure, GitHub, and AI tools. Through this role, I’ve developed strong leadership, public speaking, and teamwork skills. I’m passionate about empowering others with digital skills and contributing to global tech education initiatives.</p>
+                        </div>
+                    </div>
+                </a>
             </div>
         </section>
 
     </main>
+    
+    <script>
+        // --- DATA OBJECTS ---
+        const skillsData = {
+            en: {
+                skills_list1: ["Python", "R", "SQL", "Microsoft Excel", "Google BigQuery", "GCP", "AutoML", "Vertex AI"],
+                skills_list2: ["Machine Learning", "MLOps", "Responsible AI", "AI for Climate Change", "Predictive Modeling"],
+                skills_list4: ["Communication", "Teamwork", "Leadership", "Problem Solving", "Critical Thinking"]
+            },
+            ar: {
+                skills_list1: ["بايثون", "R", "SQL", "مايكروسوفت إكسل", "Google BigQuery", "GCP", "AutoML", "Vertex AI"],
+                skills_list2: ["تعلم الآلة", "MLOps", "الذكاء الاصطناعي المسؤول", "الذكاء الاصطناعي لتغير المناخ", "النمذجة التنبؤية"],
+                skills_list4: ["التواصل", "العمل الجماعي", "القيادة", "حل المشكلات", "التفكير النقدي"]
+            },
+            de: {
+                skills_list1: ["Python", "R", "SQL", "Microsoft Excel", "Google BigQuery", "GCP", "AutoML", "Vertex AI"],
+                skills_list2: ["Maschinelles Lernen", "MLOps", "Verantwortungsbewusste KI", "KI für den Klimawandel", "Prädiktive Modellierung"],
+                skills_list4: ["Kommunikation", "Teamarbeit", "Führung", "Problemlösung", "Kritisches Denken"]
+            }
+        };
 
-    <!-- Footer -->
-    <footer class="bg-white rounded-t-3xl shadow-inner mt-12 py-6 text-center">
-        <p class="text-gray-600">&copy; 2024 الحرية المالية. جميع الحقوق محفوظة.</p>
-    </footer>
+        const translations = {
+            en: {
+                name: "Islam Gamal",
+                title: "Data Engineer | Data Analyst | Data Scientist",
+                location: "Egypt, Cairo",
+                nav_about: "About",
+                nav_experience: "Experience",
+                nav_projects: "Projects",
+                nav_skills: "Skills",
+                nav_contact: "Contact",
+                about_title: "About Me",
+                about_summary: "Motivated student of Artificial Intelligence and Data Science, currently pursuing dual academic paths at Beni-Suef National University (BSNU), Egypt and IU International University of Applied Sciences, Germany. I'm passionate about leveraging data to solve real-world problems and have hands-on experience in machine learning, predictive analytics, and exploratory data analysis.",
+                experience_title: "Experience",
+                exp0_title: "Summer training 2025",
+                exp0_company: "CIB Egypt · Internship | Aug 2025 - Present",
+                exp0_desc: `<li>Gaining practical experience in the banking sector and financial technology.</li>`,
+                exp1_title: "2025 PRME COP30 Program",
+                exp1_company: "Principles for Responsible Management Education (PRME) | Jul 2025 - Present",
+                exp1_desc: `<li>Participating in the global initiative for responsible management education.</li>`,
+                exp2_title: "HP Tech Ventures Remote Extern",
+                exp2_company: "HP | Sep 2024",
+                exp2_desc: `<li>Increased potential investment portfolio by 15% by conducting market research for HP Tech Ventures.</li><li>Improved acquisition success by 25% by evaluating financial viability of target companies with team collaboration.</li><li>Assisted in the development of investment strategies to maximize returns and drive quick profits for HP.</li>`,
+                exp3_title: "Data Analysis Intern",
+                exp3_company: "NeuronetiX | Aug 2024 - Sep 2024",
+                exp3_desc: `<li>Developed proficiency in Excel, Power BI, and SQL through hands-on projects at NeuronetiX.</li><li>Enhanced data analysis skills, improving accuracy by 15% through collaboration with team members.</li><li>Successfully completed a final project integrating all learned skills for practical application.</li>`,
+                exp4_title: "Summer training 2024",
+                exp4_company: "CIB Egypt | Aug 2024",
+                exp4_desc: `<li>Enhanced financial transaction efficiency by 15% through participation in training on blockchain and fintech.</li><li>Collaborated with experts to gain insights into cutting-edge advancements in the industry.</li><li>Improved Skills in blockchain technology, financial transactions, and industry trends.</li>`,
+                projects_title: "Projects",
+                proj1_title: "Image Classification Using Deep Learning and TensorFlow",
+                proj1_desc: "Increased image classification accuracy by 15% by training a deep learning model using TensorFlow and Keras workflow. The project trains a model on a custom dataset and includes data preprocessing, augmentation, model building, training, evaluation, and prediction.",
+                proj2_title: "Predicting the Weather Using Machine Learning",
+                proj2_desc: "Built a machine learning model to predict weather conditions based on historical data. Performed data preprocessing, feature selection, and model training using algorithms like Linear Regression and Decision Trees to accurately forecast temperature and other weather metrics. Improved weather prediction accuracy by 15%.",
+                proj3_title: "Exploring eBay Car Sales Data",
+                proj3_desc: "Increased decision-making efficiency by 30%, analyzing 5,000 eBay Germany car sales listings to gain insights into the used car market. The project involved cleaning, analyzing, and visualizing the data.",
+                proj4_title: "Web-Scraping Financial Data using Nasdaq Data Link API",
+                proj4_desc: "Improved financial data analysis capacity by 20% by optimizing data collection from Nasdaq Data Link API. This involved pulling time-series data, cleaning it, filtering for a specific date range, and preparing it for further analysis.",
+                view_on_github: "View on GitHub",
+                download_cv: "Download CV",
+                skills_title: "Skills",
+                skills_cat1: "Programming & Cloud",
+                skills_cat2: "AI & Machine Learning",
+                skills_cat4: "Soft Skills",
+                education_title: "Education",
+                certifications_title: "Licenses & Certifications",
+                edu1_degree: "Bachelor's, Data Science",
+                edu1_uni: "IU International University of Applied Sciences",
+                edu1_date: "2025 - 2028",
+                edu2_degree: "Bachelor's, AI and data science",
+                edu2_uni: "Beni Suef National University",
+                edu2_date: "2023 - 2027",
+                cert1_title: "Professional Machine Learning Engineer",
+                cert1_issuer: "Google",
+                cert2_title: "IBM Data Science",
+                cert2_issuer: "IBM",
+                cert3_title: "IBM Data Analyst",
+                cert3_issuer: "IBM",
+                cert4_title: "Machine Learning",
+                cert4_issuer: "DeepLearning.AI",
+                cert5_title: "IBM Data Analytics with Excel and R",
+                cert5_issuer: "IBM",
+                cert6_title: "Skills for Success",
+                cert6_issuer: "Fullbridge",
+                cert7_title: "Become a Data Scientist",
+                cert7_issuer: "LinkedIn",
+                languages_title: "Languages",
+                lang1_name: "Arabic",
+                lang1_level: "Native",
+                lang2_name: "English",
+                lang2_level: "Fluent",
+                lang3_name: "German",
+                lang3_level: "Beginner",
+                volunteering_title: "Volunteering",
+                volunteer_title: "Beni Suef Students Ambassador",
+                volunteer_org: "Microsoft Learn Student Ambassadors",
+                volunteer_date: "Apr 2025 - Present",
+                volunteer_desc: "As a Microsoft Learn Student Ambassador, I represent Microsoft at my university and help build a local tech community. I organize workshops and events to introduce fellow students to Microsoft technologies like Azure, GitHub, and AI tools. Through this role, I’ve developed strong leadership, public speaking, and teamwork skills. I’m passionate about empowering others with digital skills and contributing to global tech education initiatives."
+            },
+            ar: {
+                name: "إسلام جمال",
+                title: "مهندس بيانات | محلل بيانات | عالم بيانات",
+                location: "مصر, القاهرة",
+                nav_about: "عني",
+                nav_experience: "الخبرات",
+                nav_projects: "المشاريع",
+                nav_skills: "المهارات",
+                nav_contact: "تواصل",
+                about_title: "نبذة عني",
+                about_summary: "طالب شغوف بالذكاء الاصطناعي وعلوم البيانات، أدرس حاليًا في مسارين أكاديميين مزدوجين في جامعة بني سويف الأهلية (BSNU) بمصر، وجامعة IU الدولية للعلوم التطبيقية بألمانيا. لدي شغف كبير باستغلال البيانات لحل مشكلات العالم الحقيقي، وأمتلك خبرة عملية في تعلم الآلة، التحليلات التنبؤية، وتحليل البيانات الاستكشافي.",
+                experience_title: "الخبرات العملية",
+                exp0_title: "تدريب صيفي 2025",
+                exp0_company: "البنك التجاري الدولي CIB · تدريب | أغسطس 2025 - الآن",
+                exp0_desc: `<li>اكتساب خبرة عملية في القطاع المصرفي والتكنولوجيا المالية.</li>`,
+                exp1_title: "برنامج PRME COP30 لعام 2025",
+                exp1_company: "مبادئ التعليم الإداري المسؤول (PRME) | يوليو 2025 - حتى الآن",
+                exp1_desc: `<li>المشاركة في المبادرة العالمية للتعليم الإداري المسؤول.</li>`,
+                exp2_title: "متدرب خارجي في HP Tech Ventures",
+                exp2_company: "HP | سبتمبر 2024",
+                exp2_desc: `<li>زيادة حافظة الاستثمارات المحتملة بنسبة 15% عبر إجراء أبحاث سوق لـ HP Tech Ventures.</li><li>تحسين نجاح عمليات الاستحواذ بنسبة 25% من خلال تقييم الجدوى المالية للشركات المستهدفة.</li><li>المساعدة في تطوير استراتيجيات استثمارية لزيادة العوائد وتحقيق أرباح سريعة.</li>`,
+                exp3_title: "متدرب في تحليل البيانات",
+                exp3_company: "NeuronetiX | أغسطس 2024 - سبتمبر 2024",
+                exp3_desc: `<li>تطوير الكفاءة في استخدام Excel، وPower BI، وSQL من خلال مشاريع عملية.</li><li>تعزيز مهارات تحليل البيانات، مما أدى إلى تحسين الدقة بنسبة 15% بالتعاون مع أعضاء الفريق.</li><li>إكمال مشروع نهائي بنجاح يدمج جميع المهارات المكتسبة للتطبيق العملي.</li>`,
+                exp4_title: "تدريب صيفي 2024",
+                exp4_company: "البنك التجاري الدولي CIB | أغسطس 2024",
+                exp4_desc: `<li>تحسين كفاءة المعاملات المالية بنسبة 15% من خلال المشاركة في تدريب على البلوك تشين والتكنولوجيا المالية.</li><li>التعاون مع الخبراء لاكتساب رؤى حول أحدث التطورات في الصناعة.</li><li>تحسين المهارات في تكنولوجيا البلوك تشين والمعاملات المالية واتجاهات الصناعة.</li>`,
+                projects_title: "المشاريع",
+                proj1_title: "تصنيف الصور باستخدام التعلم العميق و TensorFlow",
+                proj1_desc: "زيادة دقة تصنيف الصور بنسبة 15% عن طريق تدريب نموذج تعلم عميق باستخدام TensorFlow و Keras. يقوم المشروع بتدريب نموذج على مجموعة بيانات مخصصة ويتضمن المعالجة المسبقة للبيانات، والزيادة، وبناء النموذج، والتدريب، والتقييم، والتنبؤ.",
+                proj2_title: "التنبؤ بالطقس باستخدام تعلم الآلة",
+                proj2_desc: "بناء نموذج تعلم آلة للتنبؤ بأحوال الطقس بناءً على البيانات التاريخية. تم تنفيذ المعالجة المسبقة للبيانات، واختيار الميزات، وتدريب النموذج باستخدام خوارزميات مثل الانحدار الخطي وأشجار القرار للتنبؤ بدقة بدرجة الحرارة ومقاييس الطقس الأخرى. تم تحسين دقة التنبؤ بالطقس بنسبة 15%.",
+                proj3_title: "استكشاف بيانات مبيعات سيارات eBay",
+                proj3_desc: "زيادة كفاءة اتخاذ القرار بنسبة 30%، من خلال تحليل 5000 قائمة مبيعات سيارات من موقع eBay ألمانيا للحصول على رؤى حول سوق السيارات المستعملة. تضمن المشروع تنظيف البيانات وتحليلها وتصويرها.",
+                proj4_title: "استخلاص البيانات المالية باستخدام واجهة برمجة تطبيقات Nasdaq Data Link",
+                proj4_desc: "تحسين قدرة تحليل البيانات المالية بنسبة 20% عبر تحسين جمع البيانات من واجهة برمجة تطبيقات Nasdaq Data Link. تضمن ذلك سحب بيانات السلاسل الزمنية وتنظيفها وتصفيتها لنطاق تاريخ محدد وإعدادها لمزيد من التحليل.",
+                view_on_github: "شاهد على جيت هاب",
+                download_cv: "تحميل السيرة الذاتية",
+                skills_title: "المهارات",
+                skills_cat1: "البرمجة والسحابة",
+                skills_cat2: "الذكاء الاصطناعي وتعلم الآلة",
+                skills_cat4: "المهارات الشخصية",
+                education_title: "التعليم",
+                certifications_title: "التراخيص والشهادات",
+                edu1_degree: "بكالوريوس, علوم البيانات",
+                edu1_uni: "جامعة IU الدولية للعلوم التطبيقية",
+                edu1_date: "2025 - 2028",
+                edu2_degree: "بكالوريوس, الذكاء الاصطناعي وعلوم البيانات",
+                edu2_uni: "جامعة بني سويف الأهلية",
+                edu2_date: "2023 - 2027",
+                cert1_title: "مهندس تعلم آلة محترف",
+                cert1_issuer: "Google",
+                cert2_title: "علوم بيانات IBM",
+                cert2_issuer: "IBM",
+                cert3_title: "محلل بيانات IBM",
+                cert3_issuer: "IBM",
+                cert4_title: "تعلم الآلة",
+                cert4_issuer: "DeepLearning.AI",
+                cert5_title: "تحليلات بيانات IBM باستخدام Excel و R",
+                cert5_issuer: "IBM",
+                cert6_title: "مهارات للنجاح",
+                cert6_issuer: "Fullbridge",
+                cert7_title: "كن عالم بيانات",
+                cert7_issuer: "LinkedIn",
+                languages_title: "اللغات",
+                lang1_name: "العربية",
+                lang1_level: "لغة أم",
+                lang2_name: "الإنجليزية",
+                lang2_level: "إتقان تام",
+                lang3_name: "الألمانية",
+                lang3_level: "مبتدئ",
+                volunteering_title: "العمل التطوعي",
+                volunteer_title: "سفير طلاب مايكروسوفت في بني سويف",
+                volunteer_org: "برنامج سفراء مايكروسوفت للطلبة",
+                volunteer_date: "أبريل 2025 - حتى الآن",
+                volunteer_desc: "بصفتي سفيرًا لطلاب Microsoft Learn، أمثل Microsoft في جامعتي وأساعد في بناء مجتمع تقني محلي. أنظم ورش عمل وفعاليات لتعريف زملائي الطلاب بتقنيات Microsoft مثل Azure و GitHub وأدوات الذكاء الاصطناعي. من خلال هذا الدور، طورت مهارات قوية في القيادة والخطابة العامة والعمل الجماعي. أنا متحمس لتمكين الآخرين بالمهارات الرقمية والمساهمة في مبادرات التعليم التقني العالمية."
+            },
+            de: {
+                name: "Islam Gamal",
+                title: "Dateningenieur | Datenanalyst | Datenwissenschaftler",
+                location: "Ägypten, Kairo",
+                nav_about: "Über mich",
+                nav_experience: "Erfahrung",
+                nav_projects: "Projekte",
+                nav_skills: "Fähigkeiten",
+                nav_contact: "Kontakt",
+                about_title: "Über mich",
+                about_summary: "Motivierter Student der Künstlichen Intelligenz und Datenwissenschaft, der derzeit einen dualen akademischen Weg an der Beni-Suef National University (BSNU), Ägypten, und der IU Internationalen Hochschule, Deutschland, verfolgt. Meine Leidenschaft ist es, Daten zur Lösung realer Probleme zu nutzen, und ich verfüge über praktische Erfahrung im maschinellen Lernen, in der prädiktiven Analytik und in der explorativen Datenanalyse.",
+                experience_title: "Erfahrung",
+                exp0_title: "Sommertraining 2025",
+                exp0_company: "CIB Egypt · Praktikum | Aug 2025 - Heute",
+                exp0_desc: `<li>Sammeln praktischer Erfahrungen im Bankensektor und in der Finanztechnologie.</li>`,
+                exp1_title: "2025 PRME COP30 Programm",
+                exp1_company: "Principles for Responsible Management Education (PRME) | Juli 2025 - Heute",
+                exp1_desc: `<li>Teilnahme an der globalen Initiative für verantwortungsvolle Managementausbildung.</li>`,
+                exp2_title: "HP Tech Ventures Remote Extern",
+                exp2_company: "HP | Sep 2024",
+                exp2_desc: `<li>Steigerung des potenziellen Investitionsportfolios um 15 % durch Marktforschung für HP Tech Ventures.</li><li>Verbesserung des Akquisitionserfolgs um 25 % durch Bewertung der finanziellen Tragfähigkeit von Zielunternehmen.</li><li>Mitarbeit bei der Entwicklung von Anlagestrategien zur Maximierung der Rendite und zur Erzielung schneller Gewinne.</li>`,
+                exp3_title: "Praktikant Datenanalyse",
+                exp3_company: "NeuronetiX | Aug 2024 - Sep 2024",
+                exp3_desc: `<li>Entwicklung von Kenntnissen in Excel, Power BI und SQL durch praxisnahe Projekte bei NeuronetiX.</li><li>Verbesserung der Datenanalysefähigkeiten und Steigerung der Genauigkeit um 15 % durch Zusammenarbeit mit Teammitgliedern.</li><li>Erfolgreicher Abschluss eines Abschlussprojekts, das alle erlernten Fähigkeiten integriert.</li>`,
+                exp4_title: "Sommertraining 2024",
+                exp4_company: "CIB Egypt | Aug 2024",
+                exp4_desc: `<li>Steigerung der Effizienz von Finanztransaktionen um 15 % durch Teilnahme an Schulungen zu Blockchain und Fintech.</li><li>Zusammenarbeit mit Experten, um Einblicke in modernste Fortschritte der Branche zu gewinnen.</li><li>Verbesserte Fähigkeiten in Blockchain-Technologie, Finanztransaktionen und Branchentrends.</li>`,
+                projects_title: "Projekte",
+                proj1_title: "Bildklassifizierung mit Deep Learning und TensorFlow",
+                proj1_desc: "Steigerung der Bildklassifizierungsgenauigkeit um 15 % durch das Training eines Deep-Learning-Modells mit TensorFlow und Keras. Das Projekt trainiert ein Modell auf einem benutzerdefinierten Datensatz und umfasst Datenvorverarbeitung, -erweiterung, Modellaufbau, Training, Evaluierung und Vorhersage.",
+                proj2_title: "Wettervorhersage mit maschinellem Lernen",
+                proj2_desc: "Erstellung eines maschinellen Lernmodells zur Vorhersage von Wetterbedingungen auf der Grundlage historischer Daten. Durchführung von Datenvorverarbeitung, Merkmalsauswahl und Modelltraining mit Algorithmen wie linearer Regression und Entscheidungsbäumen zur genauen Vorhersage von Temperatur und anderen Wettermetriken. Verbesserung der Wettervorhersagegenauigkeit um 15 %.",
+                proj3_title: "Analyse von eBay-Autoverkaufsdaten",
+                proj3_desc: "Steigerung der Effizienz bei der Entscheidungsfindung um 30 % durch die Analyse von 5.000 eBay Deutschland-Autoverkaufsangeboten, um Einblicke in den Gebrauchtwagenmarkt zu gewinnen. Das Projekt umfasste die Bereinigung, Analyse und Visualisierung der Daten.",
+                proj4_title: "Web-Scraping von Finanzdaten mit der Nasdaq Data Link API",
+                proj4_desc: "Verbesserung der Kapazität zur Finanzdatenanalyse um 20 % durch Optimierung der Datenerfassung von der Nasdaq Data Link API. Dies umfasste das Abrufen von Zeitreihendaten, deren Bereinigung, Filterung nach einem bestimmten Datumsbereich und Vorbereitung für die weitere Analyse.",
+                view_on_github: "Auf GitHub ansehen",
+                download_cv: "Lebenslauf herunterladen",
+                skills_title: "Fähigkeiten",
+                skills_cat1: "Programmierung & Cloud",
+                skills_cat2: "KI & Maschinelles Lernen",
+                skills_cat4: "Soft Skills",
+                education_title: "Bildung",
+                certifications_title: "Lizenzen & Zertifizierungen",
+                edu1_degree: "Bachelor, Data Science",
+                edu1_uni: "IU Internationale Hochschule",
+                edu1_date: "2025 - 2028",
+                edu2_degree: "Bachelor, KI und Datenwissenschaft",
+                edu2_uni: "Beni Suef National University",
+                edu2_date: "2023 - 2027",
+                cert1_title: "Professional Machine Learning Engineer",
+                cert1_issuer: "Google",
+                cert2_title: "IBM Data Science",
+                cert2_issuer: "IBM",
+                cert3_title: "IBM Data Analyst",
+                cert3_issuer: "IBM",
+                cert4_title: "Maschinelles Lernen",
+                cert4_issuer: "DeepLearning.AI",
+                cert5_title: "IBM Datenanalyse mit Excel und R",
+                cert5_issuer: "IBM",
+                cert6_title: "Fähigkeiten für den Erfolg",
+                cert6_issuer: "Fullbridge",
+                cert7_title: "Werde ein Datenwissenschaftler",
+                cert7_issuer: "LinkedIn",
+                languages_title: "Sprachen",
+                lang1_name: "Arabisch",
+                lang1_level: "Muttersprache",
+                lang2_name: "Englisch",
+                lang2_level: "Fließend",
+                lang3_name: "Deutsch",
+                lang3_level: "Anfänger",
+                volunteering_title: "Ehrenamtliches Engagement",
+                volunteer_title: "Beni Suef Studentenbotschafter",
+                volunteer_org: "Microsoft Learn Student Ambassadors",
+                volunteer_date: "Apr 2025 - Heute",
+                volunteer_desc: "Als Microsoft Learn Student Ambassador vertrete ich Microsoft an meiner Universität und helfe beim Aufbau einer lokalen Tech-Community. Ich organisiere Workshops und Veranstaltungen, um Kommilitonen in Microsoft-Technologien wie Azure, GitHub und KI-Tools einzuführen. Durch diese Rolle habe ich starke Führungs-, Redner- und Teamfähigkeiten entwickelt. Ich setze mich leidenschaftlich dafür ein, andere mit digitalen Fähigkeiten auszustatten und zu globalen Initiativen für technische Bildung beizutragen."
+            }
+        };
 
+        // --- DYNAMIC CONTENT & TRANSLATION LOGIC ---
+        const languageButtons = document.querySelectorAll('.lang-btn');
+
+        function createSkillBadge(skill) {
+            return `<span class="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">${skill}</span>`;
+        }
+
+        function populateSkills(lang) {
+            const skillCategories = ['skills_list1', 'skills_list2', 'skills_list4'];
+            skillCategories.forEach(category => {
+                const container = document.querySelector(`[data-translate="${category}"]`);
+                if (container) {
+                    const skills = skillsData[lang][category];
+                    container.innerHTML = skills.map(createSkillBadge).join('');
+                }
+            });
+        }
+
+        function changeLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+            // Populate skills first
+            populateSkills(lang);
+
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-translate');
+                // Skip skill lists as they are handled by populateSkills
+                if (key.startsWith('skills_list')) return;
+
+                if (translations[lang][key]) {
+                    if (key.includes('desc')) {
+                         el.innerHTML = translations[lang][key];
+                    } else {
+                        el.textContent = translations[lang][key];
+                    }
+                }
+            });
+            
+            languageButtons.forEach(button => {
+                if (button.textContent.toLowerCase() === lang) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // --- THEME TOGGLING LOGIC ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleIcon = document.getElementById('theme-toggle-icon');
+
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                themeToggleIcon.classList.remove('fa-moon');
+                themeToggleIcon.classList.add('fa-sun');
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeToggleIcon.classList.remove('fa-sun');
+                themeToggleIcon.classList.add('fa-moon');
+            }
+        }
+
+        function toggleTheme() {
+            const currentTheme = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('theme', currentTheme);
+            applyTheme(currentTheme);
+        }
+
+        // --- INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize language
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            changeLanguage(savedLang);
+
+            // Initialize theme
+            const savedTheme = localStorage.getItem('theme') || 'light'; // Default to light theme
+            applyTheme(savedTheme);
+
+            // Add event listener for theme toggle button
+            themeToggleBtn.addEventListener('click', toggleTheme);
+        });
+    </script>
 </body>
 </html>
